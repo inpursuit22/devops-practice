@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git 'https://github.com/your-repo/demo-app.git'
+                git 'https://github.com/inpursuit22/devops-practice.git'
             }
         }
         stage('Build') {
