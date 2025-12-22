@@ -2,11 +2,7 @@ pipeline {
     agent any
 
     stages {
-        stage('Checkout') {
-            steps {
-                git 'https://github.com/inpursuit22/devops-practice.git'
-            }
-        }
+       
         stage('Build') {
             steps {
                 sh 'echo "Building application..."'
