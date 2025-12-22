@@ -1,17 +1,32 @@
 pipeline {
-  agent any
+    agent any
 
-  stages {
-    stage('Checkout') {
-      steps {
-        checkout scm
-      }
+    stages {
+        stage('Checkout') {
+            steps {
+                git 'https://github.com/your-repo/demo-app.git'
+            }
+        }
+        stage('Build') {
+            steps {
+                sh 'echo "Building application..."'
+            }
+        }
+        stage('Test') {
+            steps {
+                sh 'echo "Running tests..."'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                sh 'echo "Deploying to server..."'
+            }
+        }
     }
-
-    stage('Smoke Test') {
-      steps {
-        sh 'echo "Jenkins pipeline is running!"'
-      }
+    post {
+        failure {
+            sh 'echo "Rolling back deployment..."'
+        }
     }
-  }
 }
+
