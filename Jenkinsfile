@@ -1,32 +1,17 @@
 pipeline {
-    agent any
+  agent any
 
-    stages {
-        stage('Checkout') {
-            steps {
-                git 'https://github.com/inpursuit22/devops-practice.git'
-            }
-        }
-        stage('Build') {
-            steps {
-                sh 'echo "Building application..."'
-            }
-        }
-        stage('Test') {
-            steps {
-                sh 'echo "Running tests..."'
-            }
-        }
-        stage('Deploy') {
-            steps {
-                sh 'echo "Deploying to server..."'
-            }
-        }
+  stages {
+    stage('Checkout') {
+      steps {
+        checkout scm
+      }
     }
-    post {
-        failure {
-            sh 'echo "Rolling back deployment..."'
-        }
+
+    stage('Smoke Test') {
+      steps {
+        sh 'echo "Jenkins pipeline is running!"'
+      }
     }
+  }
 }
-
